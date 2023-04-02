@@ -1,0 +1,220 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+  ​
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+  ​
+body {
+  line-height: 1;
+}
+  ​
+ol, ul {
+  list-style: none;
+}
+  ​
+blockquote, q {
+  quotes: none;
+}
+  ​
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+  ​
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*=====================================*/
+
+
+body {
+    background-color: #242430;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: #29283a;
+    padding: 15px;
+    justify-content: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #29283a;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 0px;
+    background-color: #29283a;
+    color: #817ea9;
+    height: 50px;
+    width: 50px;
+    font-size: 50px;
+    
+}
+
+.add {
+    display: flex;
+    height: 35px;
+    background-color: #333246;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.inp {
+    border-width: 0px;
+    border-radius: 50px;
+    background: #333246;
+    color: #fffeff;
+    width: 100%;
+    padding-left: 10px;
+    font-family: Arial;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.add-button {
+    border-width: 0px;
+    border-radius: 100%;
+    width: 35px;
+    background-color: #29283a;
+    color: #fffeff;
+    font-size: 20px;
+    height: 30px;
+    margin: 3px 8px;
+}
+
+.todoshka {
+    display: flex;
+    background-color: #45445a;
+    margin: 5px 0px;
+    padding: 17.5px 10px;
+    border-width: 0px;
+    border-radius: 10px;
+    font-family: Arial;
+    max-width: 100%;
+}
+
+.todoshka-comp {
+  display: flex;
+  background-color: #45445a;
+  margin: 5px 0px;
+  padding: 17.5px 10px;
+  border-width: 0px;
+  border-radius: 10px;
+  font-family: Arial;
+  max-width: 100%;
+}
+
+.state {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    border-width: 0px;
+    border-radius: 100%;
+    background-color: #fffeff;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.completed-state {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border-width: 0px;
+    border-radius: 100%;
+    background-color: #cbfed1;
+    height: 25px;
+    width: 25px;
+    color: #458657;
+}
+
+p {
+    color: #817ea9;
+    margin: 20px 10px;
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+hr {
+    border-style: solid;
+    border-color: #42446a;
+    background-color: #42446a;
+    margin: 20px 0px;
+    
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fffeffc2;
+    margin: 0px 0px 0px 15px;
+}
+
+.add-button:hover {
+    background-color: #181822;
+    color: #b6b6b6;
+}
+
+.state:hover {
+  color: #b6b6b6;
+}
+
+.completed-state:hover {
+  color: #cbfed1;
+}
+
+.settings:hover {
+    color: #69668a;
+}
+
+.name {
+  word-break: break-all;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.completed-todo-list {
+  display: flex;
+  flex-direction: column-reverse;
+}
