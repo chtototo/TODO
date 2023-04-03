@@ -12,7 +12,7 @@ function setTitle() {
         state: 'uncompleted',
         id: todoObjectList.length+1,
     }
-    todoObjectList.push(todo);
+    todoObjectList.push(todo); 
     
     // HTMLUncompletedTodo
     todoUncompletedHTMLcode = [];
@@ -51,7 +51,7 @@ function complete(id) {
     for (todo of todoObjectList) {
         if (todo.state == 'completed') {
             todoCompletedHTMLcode.push(`<div class="todoshka-comp">
-            <button class="completed-state" id="${setID(todo.id)}" onclick="">✓</button>
+            <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
             <s class="name">${todo.name}</s>
         </div>`);
         }
@@ -63,4 +63,75 @@ function complete(id) {
         HTMLCompletedTodo += code;
     }
     document.getElementById('completed-todo-list').innerHTML=HTMLCompletedTodo;
+
+    // delete 
+    todoUncompletedHTMLcode = [];
+    for (todo of todoObjectList) {
+        if (todo.state == 'uncompleted') {
+            todoUncompletedHTMLcode.push(`<div class="todoshka">
+    <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
+    <div class="name">${todo.name}</div>
+</div>`);
+        }
+    }
+    HTMLUncompletedTodo = '';
+    for (code of todoUncompletedHTMLcode) {
+        HTMLUncompletedTodo += code;
+    }
+    document.getElementById('todo-list').innerHTML=HTMLUncompletedTodo;
+}
+
+function uncomplete(id) {
+    // state
+    for (todo of todoObjectList) {
+        if (todo.id == id) {
+            todo.state = 'uncompleted';
+        }
+    }
+
+    // HTMLCompletedTodo
+    todoCompletedHTMLcode = [];
+    for (todo of todoObjectList) {
+        if (todo.state == 'completed') {
+            todoCompletedHTMLcode.push(`<div class="todoshka-comp">
+            <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
+            <s class="name">${todo.name}</s>
+        </div>`);
+        }
+    }
+
+    // render
+    HTMLCompletedTodo = '';
+    for (code of todoCompletedHTMLcode) {
+        HTMLCompletedTodo += code;
+    }
+    document.getElementById('completed-todo-list').innerHTML=HTMLCompletedTodo;
+
+    // delete 
+    todoUncompletedHTMLcode = [];
+    for (todo of todoObjectList) {
+        if (todo.state == 'uncompleted') {
+            todoUncompletedHTMLcode.push(`<div class="todoshka">
+    <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
+    <div class="name">${todo.name}</div>
+</div>`);
+        }
+    }
+    HTMLUncompletedTodo = '';
+    for (code of todoUncompletedHTMLcode) {
+        HTMLUncompletedTodo += code;
+    }
+    document.getElementById('todo-list').innerHTML=HTMLUncompletedTodo;
+}
+
+function enter() {
+    var input = document.querySelector('input[type="text"]');
+
+    input.addEventListener('keypress', function(e){
+      if(e.which === 13){
+      	e.preventDefault();
+            setTitle();
+            render();
+      }
+    });
 }
