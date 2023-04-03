@@ -132,6 +132,7 @@ function enter() {
       	e.preventDefault();
             setTitle();
             render();
+            cleanInput();
       }
     });
 }
