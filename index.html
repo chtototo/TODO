@@ -14,8 +14,8 @@
     </div>
     <div class="content">
         <div class="add">
-            <input class='inp' type="text" placeholder="Add item" onclick="enter()">
-            <button class="add-button" onclick="setTitle(), render()">+</button>
+            <input id='inp' class='inp' type="text" placeholder="Add item" onclick="enter()">
+            <button id='add-button' class="add-button" onclick="setTitle(), render(), cleanInput()">+</button>
         </div>
         <div class="todo">
             <hr>

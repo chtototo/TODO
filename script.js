@@ -135,3 +135,7 @@ function enter() {
       }
     });
 }
+
+function cleanInput() {
+    document.getElementById('inp').value = "";
+}
