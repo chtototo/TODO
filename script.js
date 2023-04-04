@@ -108,7 +108,7 @@ function reSetName(id) {
             document.getElementById('rename-todo').innerHTML=`<div class="rename-window">
             <div class='rename-div'>
                 <p>Enter a name:</p>
-                <input class='rename-inp' id="rename-inp" type='text' onclick='enter()'>
+                <input class='rename-inp' id="rename-inp" type='text' onclick='enterRename()'>
                 <button class="ok" onclick="rename(${todo.id})">OK</button>
             </div>
         </div>`;
@@ -128,7 +128,7 @@ function rename(id) {
     document.getElementById('rename-todo').innerHTML='';
 }
 
-function enter() {
+function enterRename() {
     let input = document.querySelector('.rename-inp');
 
     input.addEventListener('keypress', function(b){
