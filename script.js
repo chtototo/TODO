@@ -108,7 +108,7 @@ function completedListUpdate() {
 }
 
 function reSetName(id, todoID) {
-    document.getElementById(id.id).innerHTML=`<input type='text' class='rename-inp' id='rename-inp'>`;
+    document.getElementById(id.id).innerHTML=`<input type='text' class='rename-inp' id='rename-inp' value='${todo.name}'>`;
     enterRename(todoID);
 }
 
