@@ -68,57 +68,16 @@ body {
     position: relative;
   }
   
-.rename-div {
-    display: flex;
-    min-width: 400px;
-    /* margin-left: auto;
-    margin-right: auto; */
-    height: 200px;
-    font-family: Arial;
-    background-color: #181822;
-    border-radius: 25px;
-    /* position: absolute; */
-    /* top: 50%; */
-    flex-direction: column;
-    padding: 10px;
-}
-
-.rename-window {
-  background-color: rgba(0, 0, 0, 0.25);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .rename-inp {
     height: 30px;
-    width: 280px;
+    width: 300px;
     outline: none;
     font-family: Arial;
     border-radius: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
     background-color: #45445a;
     border-width: 0px;
     color: #fff;
-}
-
-.ok {
-    margin-top: 80px;
-    border-radius: 25px;
-    border-width: 2px;
-    background-color: #151520;
-    border-color: #fff;
-    color: #fff;
-    width: 100px;
-    height: 75px;
-    margin-bottom: 5px;
-    margin-left: 5px;
 }
 
 .settings {
@@ -147,8 +106,7 @@ body {
     border-radius: 50px;
     background: #333246;
     color: #fffeff;
-    width: 100%;
-    padding-left: 10px;
+    width: 300px;
     font-family: Arial;
     box-sizing: border-box;
     outline: none;
@@ -174,6 +132,7 @@ body {
     border-radius: 10px;
     font-family: Arial;
     max-width: 100%;
+    
 }
 
 .todoshka-comp {
@@ -190,8 +149,14 @@ body {
 .name {
     display: flex;
     word-break: break-all;
-    max-width: 100%;
+    width: 300px;
+    text-align: left;
+    justify-content: start;
+    color: #fff;
+    font-family: Arial;
+    margin: 7px 5px 5px 10px;
 }
+
 
 
 .state {
@@ -213,20 +178,17 @@ body {
 
 .rename {
     display: flex;
-    align-self: center;
-    justify-content: center;
     border-width: 0px;
     border-radius: 100%;
     background-color: #fffeff;
     height: 25px;
     width: 25px;
-    display: flex;
     align-self: center;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     color: #45445a;
-    margin-left: 3px;
+    margin-left: 5px;
 }
 
 .rename:hover {
@@ -264,13 +226,7 @@ hr {
     
 }
 
-.name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fffeffc2;
-    margin: 0px 0px 0px 15px;
-}
+
 
 .add-button:hover {
     background-color: #181822;

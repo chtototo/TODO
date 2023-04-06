@@ -74,8 +74,8 @@ function uncompletedListUpdate() {
             if (todo.state == 'completed') {
                 todoCompletedHTMLcode.push(`<div class="todoshka-comp">
                 <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
-                <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
                 <s class="name" id="${setNAMErename(todo.id)}">${todo.name}</s>
+                <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
             </div>`);
             }
         }
@@ -94,8 +94,8 @@ function completedListUpdate() {
         if (todo.state == 'uncompleted') {
             todoUncompletedHTMLcode.push(`<div class="todoshka">
             <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
-            <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
             <div class="name" id="${setNAMErename(todo.id)}">${todo.name}</div>
+            <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
         </div>`);
         }
     }
