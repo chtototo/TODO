@@ -96,13 +96,15 @@ body {
 }
 
 .rename-inp {
-    height: 70px;
-    width: 400px;
+    height: 30px;
+    width: 280px;
     outline: none;
     font-family: Arial;
     border-radius: 25px;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: #45445a;
+    border-width: 0px;
 }
 
 .ok {

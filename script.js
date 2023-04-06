@@ -64,14 +64,18 @@ function setIDrename(id) {
     return 'rename_button_' + id;
 }
 
+function setNAMErename(id) {
+    return 'name_' + id;
+}
+
 function uncompletedListUpdate() {
     todoCompletedHTMLcode = [];
         for (todo of todoObjectList) {
             if (todo.state == 'completed') {
                 todoCompletedHTMLcode.push(`<div class="todoshka-comp">
                 <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
-                <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${todo.id})">✎</button>
-                <s class="name" id="name">${todo.name}</s>
+                <button class="rename" iid="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
+                <s class="name" id="${setNAMErename(todo.id)}">${todo.name}</s>
             </div>`);
             }
         }
@@ -83,58 +87,49 @@ function uncompletedListUpdate() {
         document.getElementById('completed-todo-list').innerHTML=HTMLCompletedTodo;
 }
 
+
 function completedListUpdate() {
     todoUncompletedHTMLcode = [];
     for (todo of todoObjectList) {
         if (todo.state == 'uncompleted') {
             todoUncompletedHTMLcode.push(`<div class="todoshka">
             <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
-            <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${todo.id})">✎</button>
-            <div class="name" id="name">${todo.name}</div>
+            <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
+            <div class="name" id="${setNAMErename(todo.id)}">${todo.name}</div>
         </div>`);
         }
     }
-
     HTMLUncompletedTodo = '';
     for (code of todoUncompletedHTMLcode) {
         HTMLUncompletedTodo += code;
+        // console.log(code);
     }
     document.getElementById('todo-list').innerHTML=HTMLUncompletedTodo;
 }
 
-function reSetName(id) {
-    for (todo of todoObjectList) {
-        if (todo.id == id) {
-            document.getElementById('rename-todo').innerHTML=`<div class="rename-window">
-            <div class='rename-div'>
-                <p>Enter a name:</p>
-                <input class='rename-inp' id="rename-inp" type='text' onclick='enterRename()'>
-                <button class="ok" onclick="rename(${todo.id})">OK</button>
-            </div>
-        </div>`;
-        }
-    }
-    // rename();
+function reSetName(id, todoID) {
+    document.getElementById(id.id).innerHTML=`<input type='text' class='rename-inp' id='rename-inp'>`;
+    enterRename(todoID);
 }
 
-function rename(id) {
+function rename(todoID) {
+    let input = document.querySelector('.rename-inp').value;
     for (todo of todoObjectList) {
-        if (todo.id == id) {
-            todo.name = document.querySelector('.rename-inp').value;
+        if (todo.id == todoID) {
+            todo.name = input;
         }
     }
-    completedListUpdate();
     uncompletedListUpdate();
-    document.getElementById('rename-todo').innerHTML='';
+    completedListUpdate();
 }
 
-function enterRename() {
+function enterRename(id) {
     let input = document.querySelector('.rename-inp');
-
+    
     input.addEventListener('keypress', function(b){
       if(b.which === 13){
       	b.preventDefault();
-            rename(todo.id);
+            rename(id);
       }
     });
 }
