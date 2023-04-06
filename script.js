@@ -74,7 +74,7 @@ function uncompletedListUpdate() {
             if (todo.state == 'completed') {
                 todoCompletedHTMLcode.push(`<div class="todoshka-comp">
                 <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
-                <button class="rename" iid="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
+                <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
                 <s class="name" id="${setNAMErename(todo.id)}">${todo.name}</s>
             </div>`);
             }
