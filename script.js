@@ -68,6 +68,10 @@ function setNAMErename(id) {
     return 'name_' + id;
 }
 
+function setDelID(id) {
+    return 'del_button_' + id;
+}
+
 function uncompletedListUpdate() {
     todoCompletedHTMLcode = [];
         for (todo of todoObjectList) {
@@ -76,6 +80,7 @@ function uncompletedListUpdate() {
                 <button class="completed-state" id="${setID(todo.id)}" onclick="uncomplete(${todo.id})">✓</button>
                 <s class="name" id="${setNAMErename(todo.id)}">${todo.name}</s>
                 <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
+                <button class="rename" id="${setDelID(todo.id)}" onclick="deleteTodo(${todo.id})">×</button>
             </div>`);
             }
         }
@@ -96,6 +101,7 @@ function completedListUpdate() {
             <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
             <div class="name" id="${setNAMErename(todo.id)}">${todo.name}</div>
             <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
+            <button class="rename" onclick="deleteTodo(${todo.id})">×</button>
         </div>`);
         }
     }
@@ -107,10 +113,18 @@ function completedListUpdate() {
     document.getElementById('todo-list').innerHTML=HTMLUncompletedTodo;
 }
 
+function deleteTodo(todoID) {
+    todoObjectList.splice(todoID-1, 1);
+    uncompletedListUpdate();
+    completedListUpdate();
+}
+
 function reSetName(id, todoID) {
     document.getElementById(id.id).innerHTML=`<input type='text' class='rename-inp' id='rename-inp' value='${todo.name}'>`;
     enterRename(todoID);
 }
+
+
 
 function rename(todoID) {
     let input = document.querySelector('.rename-inp').value;
