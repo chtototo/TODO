@@ -4,6 +4,16 @@ let todoUncompletedHTMLcode = []; // массив для дивов невыпо
 let HTMLCompletedTodo; // переменная для кода одного объекта (выполненного тодо)
 let HTMLUncompletedTodo; // переменная для кода одного объекта (невыполненного тодо)
 
+let keys = Object.keys(localStorage).filter(key => key.startsWith('todo_'));
+for (key of keys) {
+    todoObjectList.push(JSON.parse(localStorage.getItem(key)))
+}
+
+function start() {
+    uncompletedListUpdate();
+    completedListUpdate();
+}
+
 function setTitle() {
     let input = document.querySelector('.inp');
     let todo = {
@@ -12,7 +22,20 @@ function setTitle() {
         id: todoObjectList.length+1,
     }
     todoObjectList.push(todo); 
+    addToStorage(todo);
     render();
+}
+
+function deleteTodo(todoID) {
+    for (todo of todoObjectList) {
+        if (todo.id == todoID) {
+            let index = todoObjectList.indexOf(todo);
+            todoObjectList.splice(index, 1);
+        }
+    }
+    uncompletedListUpdate();
+    completedListUpdate();
+    localStorage.removeItem(`todo_${todoID}`);
 }
 
 function render() {
@@ -92,7 +115,6 @@ function uncompletedListUpdate() {
         document.getElementById('completed-todo-list').innerHTML=HTMLCompletedTodo;
 }
 
-
 function completedListUpdate() {
     todoUncompletedHTMLcode = [];
     for (todo of todoObjectList) {
@@ -101,7 +123,7 @@ function completedListUpdate() {
             <button class="state" id="${setID(todo.id)}" onclick="complete(${todo.id})">✓</button>
             <div class="name" id="${setNAMErename(todo.id)}">${todo.name}</div>
             <button class="rename" id="${setIDrename(todo.id)}" onclick="reSetName(${setNAMErename(todo.id)}, ${todo.id})">✎</button>
-            <button class="rename" onclick="deleteTodo(${todo.id})">×</button>
+            <button class="rename" id="${setDelID(todo.id)}" onclick="deleteTodo(${todo.id})">×</button>
         </div>`);
         }
     }
@@ -113,11 +135,6 @@ function completedListUpdate() {
     document.getElementById('todo-list').innerHTML=HTMLUncompletedTodo;
 }
 
-function deleteTodo(todoID) {
-    todoObjectList.splice(todoID-1, 1);
-    uncompletedListUpdate();
-    completedListUpdate();
-}
 
 function reSetName(id, todoID) {
     document.getElementById(id.id).innerHTML=`<input type='text' class='rename-inp' id='rename-inp' value='${todo.name}'>`;
@@ -146,4 +163,12 @@ function enterRename(id) {
             rename(id);
       }
     });
+}
+
+function storage(name, object) {
+    localStorage.setItem(name, JSON.stringify(object));
+}
+
+function addToStorage(element) {
+    storage(`todo_${element.id}`, element)
 }
